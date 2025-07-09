@@ -11,7 +11,7 @@ export const PeoplePage = () => {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [searchParams] = useSearchParams();
-  const [filteredPeople, setFileteredPeople] = useState<Person[]>([]);
+  const [filteredPeople, setFilteredPeople] = useState<Person[]>([]);
 
   useEffect(() => {
     setLoader(true);
@@ -57,7 +57,7 @@ export const PeoplePage = () => {
       );
     }
 
-    setFileteredPeople(filPeople);
+    setFilteredPeople(filPeople);
   }
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export const PeoplePage = () => {
                 <p data-cy="peopleLoadingError">Something went wrong</p>
               )}
 
-              {!people && (
+              {people.length === 0 && (
                 <p data-cy="noPeopleMessage">
                   There are no people on the server
                 </p>
